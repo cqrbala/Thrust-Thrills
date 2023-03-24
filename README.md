@@ -1,27 +1,39 @@
-# OpenGL boilerplate
-
-## Contents
-- glfw, glad and glm built from source in `libraries`
-
-- Standard shader class from learnopengl.com and stb_image.h in `include`
-
-- CMake file to compile project (includes glfw, glad, glm and freetype)
-
-
 ## Instructions to build
 
-1. <b>INITAL SETUP</b> (do this once)
+Clone the repository and cd into it via the terminal & execute the following commands:
 
-    - Setup FreeType to render text 
-        - Linux/macOS (recommended OSes)
-            - Download the latest stable release(2.10.1) from [the official website](https://freetype.org/download.html)
-            - Run the following
-                1.  `tar -xvf freetype-2.10.1.tar.gz`
-                2.  `cd freetype-2.10.1`
-                3.  `./configure --prefix=/usr/local/freetype/2_10_1 --enable-freetype-config` : Prefix defines where freetype is installed
-                4.  `make; make install`
-        - Windows
-            - Use [this video](https://www.youtube.com/watch?v=qW_8Dyq2asc) if using VSCode (I hope you aren't)
+```jsx
+mkdir build
+cd build
+cmake ..;make
+```
 
-2. `mkdir build; cd build`
-3. `cmake ..; make`
+This builds the application and run `./app`  to get the game up & running.
+
+## Characters Present in the game
+
+### User
+
+Always present on the left of the screen and moves in the following way:
+
+**spacebar to move up**  
+
+**release spacebar to come down.**
+
+→ The movement of the user takes into account the effect of gravity(harder to go up with resistance and free falling effect on the way down).
+
+### Coins
+
+Coins come towards the user from the right and upon colliding with it, the count of coins collected so far increases.
+
+### Zappers
+
+Zappers spin and come towards the user from the right and upon colliding with it, the game is over.
+
+## Scaling the level of difficulty
+
+The game consists of 3 levels with an increasing amount of duration for each level. 
+
+At each level, the number of zappers increases, making it hard for the user to navigate across the screen.
+
+If all the levels are successfully completed without any zapper collision in between, then the user wins the game else he loses upon collision.
